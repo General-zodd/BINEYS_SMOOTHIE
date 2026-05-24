@@ -30,7 +30,7 @@ app = Flask(
     template_folder='templates'
 )
 
-app.secret_key = "smoothie_secret_key_123"
+app.secret_key = os.getenv("SECRET_KEY")
 
 UPLOAD_FOLDER = 'static/uploads'
 
@@ -72,12 +72,12 @@ PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY")
 # =========================================
 
 db = mysql.connector.connect(
-    host="localhost",
+    host="mysql.railway.internal",
     user="root",
-    password="",
-    database="smoothie_db"
+    password="rCnfaOIKWJsISEqAmvcjwqbFqWludLBm",
+    database="railway",
+    port=3306
 )
-
 
 # =========================================
 # HOME PAGE
