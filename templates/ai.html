@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Smoothie Recommendation</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f7fb;
+            padding:40px;
+        }
+
+        .ai-box{
+            max-width:600px;
+            margin:auto;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            color:#27ae60;
+        }
+
+        select,
+        button{
+            width:100%;
+            padding:15px;
+            margin-top:20px;
+            border-radius:10px;
+        }
+
+        button{
+            background:#27ae60;
+            color:white;
+            border:none;
+            font-size:18px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="ai-box">
+
+    <h1>🤖 AI Smoothie Recommendation</h1>
+
+    <form method="POST">
+
+        <select name="goal">
+
+            <option>Energy</option>
+            <option>Weight Loss</option>
+            <option>Detox</option>
+            <option>Protein</option>
+
+        </select>
+
+        <button type="submit">
+            Get Recommendation
+        </button>
+
+    </form>
+
+    {% if recommendation %}
+
+        <h2 style="margin-top:30px;">
+            Recommended:
+            {{ recommendation }}
+        </h2>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

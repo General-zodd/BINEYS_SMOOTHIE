@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">FreshBlend</div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/order">Order</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Our Menu</h2>
+
+    <div class="grid">
+        {% for product in products %}
+        <div class="card">
+            <h3>{{ product[1] }}</h3>
+            <p>{{ product[2] }}</p>
+            <p><strong>GH₵ {{ product[3] }}</strong></p>
+            <a href="/order" class="btn">Order</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 FreshBlend Smoothies
+</footer>
+
+</body>
+</html>

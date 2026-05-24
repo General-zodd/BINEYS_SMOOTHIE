@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Alerts</title>
+</head>
+<body>
+
+<h1>Low Stock Products</h1>
+
+{% for product in low_stock %}
+
+<div>
+
+    <h2>{{ product[1] }}</h2>
+
+    <p>
+        Stock Left: {{ product[4] }}
+    </p>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+</body>
+</html>

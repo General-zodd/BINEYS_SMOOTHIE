@@ -1,0 +1,47 @@
+<div class="admin-container">
+
+    <h1>📦 Product Management</h1>
+
+    <div style="text-align:center; margin-bottom:20px;">
+        <a href="/admin/products/add" class="btn">➕ Add New Product</a>
+    </div>
+
+    <table class="product-table">
+
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for p in products %}
+        <tr>
+            <td>{{ p[0] }}</td>
+
+            <td>
+                <img src="{{ url_for('static', filename='images/' + p[5]) }}"
+                     width="50" height="50"
+                     style="border-radius:8px;">
+            </td>
+
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>GHS {{ p[3] }}</td>
+
+            <td class="actions">
+                <a href="/admin/products/edit/{{ p[0] }}" class="edit">Edit</a>
+                <a href="/admin/products/delete/{{ p[0] }}" class="delete"
+                   onclick="return confirm('Delete this product?')">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+
+</div>

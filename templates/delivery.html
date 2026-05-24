@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery Management</title>
+</head>
+<body>
+
+<h1>Delivery Orders</h1>
+
+{% for order in orders %}
+
+<div>
+
+    <h2>
+        Order #{{ order[0] }}
+    </h2>
+
+    <p>
+        Customer: {{ order[1] }}
+    </p>
+
+    <p>
+        Status: {{ order[7] }}
+    </p>
+
+    <a href="/admin/update-delivery/{{ order[0] }}/Preparing">
+        Preparing
+    </a>
+
+    <a href="/admin/update-delivery/{{ order[0] }}/On-The-Way">
+        On The Way
+    </a>
+
+    <a href="/admin/update-delivery/{{ order[0] }}/Delivered">
+        Delivered
+    </a>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+</body>
+</html>

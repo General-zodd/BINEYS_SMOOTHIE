@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="cart-container">
+
+        <h2>Your Cart</h2>
+
+        <!-- ================= CART TABLE ================= -->
+       <table class="cart-table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if cart and cart|length > 0 %}
+
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>₵{{ item.price }}</td>
+                <td>{{ item.qty }}</td>
+                <td>₵{{ item.price * item.qty }}</td>
+                <td>
+                    <a href="/remove-from-cart/{{ item.id }}" class="btn-remove">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        {% else %}
+            <tr>
+                <td colspan="5" style="text-align:center;">
+                    Your cart is empty
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+        <!-- ================= TOTAL ================= -->
+        <div class="cart-total">
+            <h3>
+                Total: ₵{{ total }}
+            </h3>
+        </div>
+
+        <!-- ================= CHECKOUT FORM ================= -->
+        <div class="order-container">
+
+            <h2>Checkout Cart</h2>
+
+            <form action="/checkout-cart" method="POST" class="order-form">
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                >
+
+                <select name="payment_method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Paystack">Paystack</option>
+                </select>
+
+                <!-- optional: only if using JS/localStorage cart -->
+                <input type="hidden" name="cart_data" id="cart_data">
+
+                <button type="submit">
+                    Order All Cart Items
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ================= OPTIONAL JS CART SUPPORT ================= -->
+    <script>
+        document.querySelector(".order-form").addEventListener("submit", function () {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart_data").value = JSON.stringify(cart);
+        });
+    </script>
+
+</body>
+
+</html>

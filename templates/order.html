@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Smoothie | FreshBlend</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">
+            FreshBlend
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/order">Order</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<!-- =========================
+     ORDER SECTION
+========================= -->
+
+<section class="section">
+
+    <div class="order-wrapper">
+
+        <!-- LEFT SIDE -->
+        <div class="order-left">
+
+            <span class="order-badge">
+                Fast Delivery
+            </span>
+
+            <h1>
+                Fresh Smoothies <br>
+                Delivered To You
+            </h1>
+
+            <p>
+                Order healthy smoothies made from fresh fruits and natural ingredients.
+                Secure payment, fast preparation, and premium taste.
+            </p>
+
+            <div class="order-features">
+
+                <div class="feature-box">
+                    🍓 Fresh Fruits
+                </div>
+
+                <div class="feature-box">
+                    ⚡ Quick Delivery
+                </div>
+
+                <div class="feature-box">
+                    💳 Secure Payments
+                </div>
+
+            </div>
+
+            <img
+                src="/static/images/smoothie1.jpg"
+                class="order-image"
+            >
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="order-container">
+
+            <h1>
+                Place Your Order
+            </h1>
+
+            <p class="order-subtitle">
+                Fill the form below to complete your smoothie order.
+            </p>
+
+            <form
+                action="/order"
+                method="POST"
+                class="order-form"
+            >
+
+                <!-- NAME -->
+                <div class="input-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+                <!-- PHONE -->
+                <div class="input-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="e.g. 0241234567"
+                        required
+                    >
+
+                </div>
+
+                <!-- PRODUCT -->
+                <div class="input-group">
+
+                    <label>Select Smoothie</label>
+
+                    <select name="product_id" required>
+
+                        {% for product in products %}
+
+                        <option value="{{ product[0] }}">
+                            {{ product[1] }} - GH₵ {{ product[3] }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <!-- QUANTITY -->
+                <div class="input-group">
+
+                    <label>Quantity</label>
+
+                    <input
+                        type="number"
+                        name="quantity"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+                <!-- PAYMENT -->
+                <div class="input-group">
+
+                    <label>Payment Method</label>
+
+                    <select name="payment_method" required>
+
+                        <option value="Cash">
+                            Cash On Delivery
+                        </option>
+
+                        <option value="Paystack">
+                            Paystack / Mobile Money
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit">
+                    Complete Order
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 FreshBlend Smoothies. All rights reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div class="admin-links">
+
+    <a href="/admin/add-product">
+        Add Product
+    </a>
+
+    <a href="/admin/analytics">
+        Analytics
+    </a>
+
+    <a href="/admin/delivery">
+        Delivery
+    </a>
+
+    <a href="/admin/inventory">
+        Inventory Alerts
+    </a>
+
+    <a href="/admin/logout">
+        Logout
+    </a>
+
+</div>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+</head>
+<body>
+
+<div style="text-align:center; margin-top:100px;">
+    <h2>Admin Login</h2>
+
+    <form method="POST" action="/admin/login">
+        <input type="text" name="username" placeholder="Username" required><br><br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+
+</div>
+
+</body>
+</html>

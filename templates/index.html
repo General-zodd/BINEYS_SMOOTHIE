@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bineys Smoothies</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    
+</head>
+
+<body>
+
+<script>
+
+function toggleDarkMode(){
+    document.body.classList.toggle("dark-mode");
+}
+
+</script>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        🍹 Bineys Smoothies
+    </div>
+
+    <nav>
+
+        <ul class="nav-links">
+
+    <li><a href="/">Home</a></li>
+
+    <li><a href="/menu">Menu</a></li>
+
+    <li><a href="/cart">Cart</a></li>
+
+    <li><a href="/contact">Contact</a></li>
+
+    <li><a href="/ai">AI</a></li>
+
+    <li><a href="/admin">Admin</a></li>
+
+    {% if session.get('user_id') %}
+        <li><a href="/logout">Logout</a></li>
+    {% else %}
+        <li><a href="/login">Login</a></li>
+    {% endif %}
+
+</ul>
+    </nav>
+
+    <button class="btn" onclick="toggleDarkMode()">
+        🌙 Dark Mode
+    </button>
+
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Fresh. Healthy. Delicious.
+        </h1>
+
+        <p>
+            Premium smoothies made with real fruits,
+            tropical flavors and healthy ingredients.
+        </p>
+
+        <a href="/menu" class="hero-btn">
+            Explore Menu
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Popular Smoothies
+    </h2>
+
+    <div class="products">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <img
+                src="/static/uploads/{{ product[5] }}"
+                alt="{{ product[1] }}"
+            >
+
+            <div class="product-info">
+
+                <h3>{{ product[1] }}</h3>
+
+                <p>{{ product[2] }}</p>
+
+                <div class="price">
+                    GH₵ {{ product[3] }}
+                </div>
+
+                <a
+                    href="/add-to-cart/{{ product[0] }}"
+                    class="btn"
+                >
+                    Add To Cart
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Why Choose Us
+    </h2>
+
+    <div class="products">
+
+        <div class="product-card">
+
+            <div class="product-info">
+
+                <h3>🍓 Fresh Fruits</h3>
+
+                <p>
+                    We use only natural fresh fruits.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <div class="product-info">
+
+                <h3>⚡ Fast Delivery</h3>
+
+                <p>
+                    Quick delivery to your location.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <div class="product-info">
+
+                <h3>💚 Healthy Lifestyle</h3>
+
+                <p>
+                    Nutrition packed in every smoothie.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>
+        🍹 Bineys Smoothies
+    </h2>
+
+    <p>
+        Fresh smoothies for a healthier lifestyle.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Bineys Smoothies
+    </p>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Order</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f7fb;
+            padding:40px;
+        }
+
+        .tracking-box{
+            max-width:700px;
+            margin:auto;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+            color:#27ae60;
+        }
+
+        .step{
+            padding:20px;
+            margin:20px 0;
+            border-left:6px solid #27ae60;
+            background:#f9fff9;
+            border-radius:10px;
+            font-size:20px;
+        }
+
+        .active{
+            background:#27ae60;
+            color:white;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="tracking-box">
+
+    <h1>Track Your Order</h1>
+
+    <div class="step {% if status == 'Order Received' %}active{% endif %}">
+        ✅ Order Received
+    </div>
+
+    <div class="step {% if status == 'Preparing Smoothie' %}active{% endif %}">
+        🥤 Preparing Smoothie
+    </div>
+
+    <div class="step {% if status == 'Out For Delivery' %}active{% endif %}">
+        🚚 Out For Delivery
+    </div>
+
+    <div class="step {% if status == 'Delivered' %}active{% endif %}">
+        📦 Delivered
+    </div>
+
+</div>
+
+</body>
+</html>
